@@ -1,3 +1,3 @@
 Cloud
 =====
-Java solution for CMU 15619 - Cloud Computing 
+Java solutions for CMU 15619 - Cloud Computing 
