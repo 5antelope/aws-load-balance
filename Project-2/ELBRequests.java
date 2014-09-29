@@ -24,7 +24,7 @@ public class ELBRequests{
 	
 	public ELBRequests() throws Exception
 	{
-		init();
+		
 	}
 	
 	private void init() throws Exception
