@@ -11,6 +11,7 @@ import com.amazonaws.services.autoscaling.model.DeleteLaunchConfigurationRequest
 import com.amazonaws.services.autoscaling.model.InstanceMonitoring;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyRequest;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyResult;
+import com.amazonaws.services.autoscaling.model.Tag;
 import com.amazonaws.services.autoscaling.model.UpdateAutoScalingGroupRequest;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatchClient;
 import com.amazonaws.services.cloudwatch.model.Dimension;
@@ -46,6 +47,11 @@ public class AutoScalingGroup {
 	
 	private void createAutoScalingGroup()
 	{
+		Tag tags = new Tag();
+		tags
+			.withKey("Project")
+			.withValue("2.3");
+		
 		InstanceMonitoring instanceMonitor = new InstanceMonitoring();
 		instanceMonitor.setEnabled(true);
 		CreateLaunchConfigurationRequest launchConfigurationRequest = new CreateLaunchConfigurationRequest();
@@ -66,7 +72,8 @@ public class AutoScalingGroup {
 			.withAutoScalingGroupName("cc2.2ASG") // auto scaling group name
 			.withLaunchConfigurationName("DataCenterConfig")
 			.withAvailabilityZones("us-east-1d")
-			.withLoadBalancerNames("MySimpleELB");
+			.withLoadBalancerNames("MySimpleELB")
+			.withTags(tags);
 		asg.createAutoScalingGroup(ASGRequest);
 		System.out.println("auto scaling group completed...");
 	}
