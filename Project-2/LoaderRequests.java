@@ -240,4 +240,15 @@ public class LoaderRequests {
 			e.printStackTrace();
 		}
 	}
+	
+	public void delete() throws Exception
+	{
+		TerminateInstancesRequest terminateInstancesRequest = new TerminateInstancesRequest();
+		terminateInstancesRequest.withInstanceIds(instanceID);
+		
+		Thread.sleep(30*1000);
+		System.out.println("ready to terminate loader...");
+		
+		ec2.terminateInstances(terminateInstancesRequest);
+	}
 }
