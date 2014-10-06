@@ -32,6 +32,12 @@ public class Launcher
     	loaderRequests.phase2(ELBDNS);
     	
     	asg.shutDown();
+    	
+    	Thread.sleep(300*1000);
+    	
+    	loaderRequests.delete();
+    	elb.delete();
+    	
     	System.out.println("cleaned");
 	}
 }
