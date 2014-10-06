@@ -114,4 +114,13 @@ public class ELBRequests{
 			}
 		}
 	}
+	
+	public void delete() throws Exception
+	{
+		DeleteLoadBalancerRequest deleteLoadBalancerRequest = new DeleteLoadBalancerRequest();
+		deleteLoadBalancerRequest.withLoadBalancerName("MySimpleELB");
+		System.out.println("deleting load-balancer...");
+		Thread.sleep(30*1000);
+		elb.deleteLoadBalancer(deleteLoadBalancerRequest);
+	}
 }
